@@ -187,11 +187,9 @@
        e.res <- e.ind;    t.res <- t.ind
     }
 
-    sheet = list(start=NULL, end=NULL, length=NULL, chain=NULL)
+    sheet = list(start=NULL, end=NULL, length=NULL, chain=NULL, type=NULL)
     helix = list(start=NULL, end=NULL, length=NULL, chain=NULL, type=NULL)
-    turn = sheet
-
-    ## ToDo: Add "type" for turns and strands too...
+    turn = list(start=NULL, end=NULL, length=NULL, chain=NULL, type=NULL)
 
     if(length(h.res)>1) {
 #      if(is.null(nrow(h.res)))
@@ -220,6 +218,7 @@
       sheet$end    = c(sheet$end, e.res[, "end"])
       sheet$length = c(sheet$length, e.res[, "length"])
       sheet$chain  = c(sheet$chain, cha[e.ind[, "start"]])
+      sheet$type   = c(sheet$type, sse[e.ind[, "start"]])
     }
     if(length(sheet$start) > 0)
        sheet <- lapply(sheet, function(x) {names(x) <- 1:length(sheet$start); return(x)})
@@ -230,6 +229,7 @@
       turn$end    = c(turn$end, t.res[, "end"])
       turn$length = c(turn$length, t.res[, "length"])
       turn$chain  = c(turn$chain, cha[t.ind[, "start"]])
+      turn$type   = c(turn$type, sse[t.ind[, "start"]])
     }
     if(length(turn$start) > 0)
        turn <- lapply(turn, function(x) {names(x) <- 1:length(turn$start); return(x)})

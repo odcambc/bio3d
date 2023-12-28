@@ -199,6 +199,7 @@ function (pdb = NULL,
       cat(paste("Writing 1 frame with",natom,"atoms "))
     }
     lines <- NULL
+    lines <- rbind(lines, "CRYST1  186.100  185.900  186.900  90.00  90.00  90.00 F 2 2 2      96")
     ii = 0
     teleno <- as.numeric(eleno)
     for (i in 1:natom) {
